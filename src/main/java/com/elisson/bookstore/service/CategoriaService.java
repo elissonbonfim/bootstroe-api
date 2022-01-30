@@ -12,18 +12,23 @@ import com.elisson.bookstore.exceptions.ObjectNotFoundException;
 
 @Service
 public class CategoriaService {
-	
+
 	@Autowired
 	private CategoriaRepository categoriaRepository;
-	
+
+	public Categoria findById(Integer id) {
+		Optional<Categoria> obj = categoriaRepository.findById(id);
+		return obj.orElseThrow(() -> new ObjectNotFoundException(
+				"Objeto não encontrado! Id: " + id + ", Tipo: " + Categoria.class.getName()));
+	}
+
 	public List<Categoria> findAll() {
 		return categoriaRepository.findAll();
 	}
 	
-	public Categoria findById(Integer id) {
-		Optional<Categoria> obj = categoriaRepository.findById(id);
-		return obj.orElseThrow(() -> new ObjectNotFoundException(
-				"Objeto não encontrado! Id:" + id + ", Tipo: " + Categoria.class.getName()));
+	public Categoria create(Categoria obj) {
+		obj.setId(null);
+		return categoriaRepository.save(obj);
 	}
 
 }

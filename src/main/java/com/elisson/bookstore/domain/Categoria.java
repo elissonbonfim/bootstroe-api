@@ -20,7 +20,7 @@ public class Categoria implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idInteger;
+	private Integer id;
 
 	private String nome;
 	private String descricao;
@@ -31,20 +31,20 @@ public class Categoria implements Serializable{
 	public Categoria() {
 	}
 
-	public Categoria(Integer idInteger, String nome, String descricao, List<Livro> livros) {
+	public Categoria(Integer id, String nome, String descricao, List<Livro> livros) {
 		super();
-		this.idInteger = idInteger;
+		this.id = id;
 		this.nome = nome;
 		this.descricao = descricao;
 		this.livros = livros;
 	}
 
-	public Integer getIdInteger() {
-		return idInteger;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setIdInteger(Integer idInteger) {
-		this.idInteger = idInteger;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getNome() {
@@ -73,7 +73,7 @@ public class Categoria implements Serializable{
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(idInteger);
+		return Objects.hash(id);
 	}
 
 	@Override
@@ -85,7 +85,7 @@ public class Categoria implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Categoria other = (Categoria) obj;
-		return Objects.equals(idInteger, other.idInteger);
+		return Objects.equals(id, other.id);
 	}
 
 }
